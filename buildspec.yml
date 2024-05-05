@@ -23,10 +23,9 @@ phases:
       - aws s3 cp deployment_package.zip s3://s3-airbnb-landing/
 
       - echo "Updating Lambda function via S3..."
-      - aws lambda update-function-code --function-name ProduceAirbnbBookingData --s3-bucket s3-airbnb-landing --s3-key deployment_package/lambda_function_1.py
+      - aws lambda update-function-code --function-name ProduceAirbnbBookingData --s3-bucket s3-airbnb-landing --s3-key deployment_package.zip
       - echo "Updated Lambda function ProduceAirbnbBookingData"
 
-      - aws lambda update-function-code --function-name ProcessFilteredBookings --s3-bucket s3-airbnb-landing --s3-key deployment_package/lambda_function_2.py
-      - echo "Updated Lambda function ProcessFilteredBookings"
+      - aws lambda update-function-code --function-name ProcessFilteredBookings --s3-bucket s3-airbnb-landing --s3-key deployment_package.zip
 
       - echo "Deployment complete!"
