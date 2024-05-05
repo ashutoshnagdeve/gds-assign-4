@@ -16,10 +16,10 @@ phases:
       - zip -r9 ../deployment_package.zip . -i .
 
       - echo "Zipping lambda_function_1.py..."
-      - zip -r9 ../lambda_fn_1.zip lambda_function_1.py
+      - zip -r9 ../lambda_fn_1.zip . -i lambda_function_1.py
 
       - echo "Zipping lambda_function_2.py..."
-      - zip -r9 ../lambda_fn_2.zip lambda_function_2.py
+      - zip -r9 ../lambda_fn_2.zip . -i lambda_function_2.py
 
   post_build:
     commands:
