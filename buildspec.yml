@@ -12,10 +12,10 @@ phases:
     commands:
       - echo "Zipping deployment package..."
       - cd lib
-      - zip -r9 ../deployment_package.zip .
+      - zip -r9 ../deployment_package.zip . -i .
       - cd ..
-      - zip -g deployment_package.zip lambda_data_to_s3.py
-      - zip -g deployment_package.zip lambda_mock_data.py
+      - zip -g deployment_package.zip lambda_function_1.py
+      - zip -g deployment_package.zip lambda_function_2.py
 
   post_build:
     commands:
