@@ -14,26 +14,20 @@ phases:
       - cd lib
       - echo "Zipping deployment package..."
       - zip -r9 ../deployment_package.zip . -i .
-
-      - echo "Zipping lambda_function_1.py..."
-      - zip -r9 ../lambda_fn_1.zip . -i lambda_function_1.py
-
-      - echo "Zipping lambda_function_2.py..."
-      - zip -r9 ../lambda_fn_2.zip . -i lambda_function_2.py
+      - cd ..
+      - zip -g deployment_package.zip lambda_function_1.py
+      - zip -g deployment_package.zip lambda_function_2.py
 
   post_build:
     commands:
       - echo "Uploading package to s3..."
       - aws s3 cp deployment_package.zip s3://s3-airbnb-landing/
-      - aws s3 cp lambda_fn_1.zip s3://s3-airbnb-landing/extracted_files/
-      - aws s3 cp lambda_fn_2.zip s3://s3-airbnb-landing/extracted_files/
-      
 
       - echo "Updating Lambda function via S3..."
-      - aws lambda update-function-code --function-name ProduceAirbnbBookingData --s3-bucket s3-airbnb-landing --s3-key extracted_files/lambda_fn_1.zip
+      - aws lambda update-function-code --function-name ProduceAirbnbBookingData --s3-bucket s3-airbnb-landing --s3-key deployment_package.zip
       - echo "Updated Lambda function ProduceAirbnbBookingData"
 
-      - aws lambda update-function-code --function-name ProcessFilteredBookings --s3-bucket s3-airbnb-landing --s3-key extracted_files/lambda_fn_2.zip
+      - aws lambda update-function-code --function-name ProcessFilteredBookings --s3-bucket s3-airbnb-landing --s3-key deployment_package.zip
       - echo "Updated Lambda function ProcessFilteredBookings"
 
       - echo "Deployment complete!"
