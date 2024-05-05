@@ -19,7 +19,10 @@ phases:
 
   post_build:
     commands:
-      - echo "Updating Lambda functions..."
+      - echo "Uploading package to s3..."
+      - aws s3 cp deployment_package.zip s3://s3-airbnb-landing/
+
+      - echo "Updating Lambda function via S3..."
       - aws lambda update-function-code --function-name ProduceAirbnbBookingData --s3-bucket s3-airbnb-landing --s3-key deployment_package.zip/lambda_function_1.py
       - echo "Updated Lambda function ProduceAirbnbBookingData"
 
