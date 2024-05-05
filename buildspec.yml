@@ -16,19 +16,17 @@ phases:
       - cd ..
       - zip -g deployment_package.zip lambda_data_to_s3.py
       - zip -g deployment_package.zip lambda_mock_data.py
- 
-      
 
   post_build:
     commands:
-      # Update Lambda function ProduceAirbnbBookingData with lambda_data_to_s3.py
-      - aws lambda update-function-code --function-name ProduceAirbnbBookingData --s3-bucket s3-airbnb-landing --s3-key deployment_package.zip 
+      - echo "Updating Lambda functions..."
+      - aws lambda update-function-code --function-name ProduceAirbnbBookingData --s3-bucket s3-airbnb-landing --s3-key deployment_package.zip
       - echo "Updated Lambda function ProduceAirbnbBookingData"
 
-      # Update Lambda function ProcessFilteredBookings with lambda_mock_data.py code
-      - aws lambda update-function-code --function-name ProcessFilteredBookings --s3-bucket s3-airbnb-landing --s3-key deployment_package.zip 
+      - aws lambda update-function-code --function-name ProcessFilteredBookings --s3-bucket s3-airbnb-landing --s3-key deployment_package.zip
       - echo "Updated Lambda function ProcessFilteredBookings"
 
       - echo "Deployment complete!"
+
 
       
