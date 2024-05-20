@@ -12,8 +12,8 @@ def data_generator():
         "userId": ''.join(random.choices(string.ascii_uppercase + string.digits, k=10)),
         "propertyId": ''.join(random.choices(string.ascii_uppercase + string.digits, k=10)),
         "location": random.choice(["Tampa, Florida", "Hyd, Ind", "Blr, Ind"]),
-        "startDate": startDate,
-        "endDate": endDate,
+        "startDate": random.choice(["2024-03-12","2024-03-13","2024-03-14"]),
+        "endDate": random.choice(["2024-03-13","2024-03-14","2024-03-15"]),
         "price": '$ ' + str(random.randint(100, 999))
     }
     return message
