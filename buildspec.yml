@@ -18,7 +18,7 @@ phases:
       - cp lambda_function_1.py ProduceAirbnbBookingData/
       # - pip install -r ProduceAirbnbBookingData/requirements.txt -t ProduceAirbnbBookingData/
       - cd ProduceAirbnbBookingData
-      - zip
+      - mv lambda_function_1.py lambda_function.py
       - zip -r9 ../deployment_package/ProduceAirbnbBookingData.zip .
       - cd ..
 
@@ -28,6 +28,7 @@ phases:
       - cp lambda_function_2.py AirBnB-enrichment-filter/
       # - pip install -r AirBnB-enrichment-filter/requirements.txt -t AirBnB-enrichment-filter/
       - cd AirBnB-enrichment-filter
+      - mv lambda_function_2.py lambda_function.py
       - zip -r9 ../deployment_package/AirBnB-enrichment-filter.zip .
       - cd ..
 
@@ -37,6 +38,7 @@ phases:
       - cp lambda_function_3.py ProcessFilteredBookings/
       # - pip install -r ProcessFilteredBookings/requirements.txt -t ProcessFilteredBookings/
       - cd ProcessFilteredBookings
+      - mv lambda_function_3.py lambda_function.py
       - zip -r9 ../deployment_package/ProcessFilteredBookings.zip .
       - cd ..
 
