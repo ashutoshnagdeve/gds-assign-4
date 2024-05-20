@@ -16,7 +16,7 @@ phases:
       - echo "Packaging ProduceAirbnbBookingData..."
       - mkdir -p ProduceAirbnbBookingData
       - cp lambda_function_1.py ProduceAirbnbBookingData/
-      - pip install -r ProduceAirbnbBookingData/requirements.txt -t ProduceAirbnbBookingData/
+      # - pip install -r ProduceAirbnbBookingData/requirements.txt -t ProduceAirbnbBookingData/
       - cd ProduceAirbnbBookingData
       - zip
       - zip -r9 ../deployment_package/ProduceAirbnbBookingData.zip .
@@ -26,7 +26,7 @@ phases:
       - echo "Packaging AirBnB-enrichment-filter..."
       - mkdir -p AirBnB-enrichment-filter
       - cp lambda_function_2.py AirBnB-enrichment-filter/
-      - pip install -r AirBnB-enrichment-filter/requirements.txt -t AirBnB-enrichment-filter/
+      # - pip install -r AirBnB-enrichment-filter/requirements.txt -t AirBnB-enrichment-filter/
       - cd AirBnB-enrichment-filter
       - zip -r9 ../deployment_package/AirBnB-enrichment-filter.zip .
       - cd ..
@@ -35,7 +35,7 @@ phases:
       - echo "Packaging ProcessFilteredBookings..."
       - mkdir -p ProcessFilteredBookings
       - cp lambda_function_3.py ProcessFilteredBookings/
-      - pip install -r ProcessFilteredBookings/requirements.txt -t ProcessFilteredBookings/
+      # - pip install -r ProcessFilteredBookings/requirements.txt -t ProcessFilteredBookings/
       - cd ProcessFilteredBookings
       - zip -r9 ../deployment_package/ProcessFilteredBookings.zip .
       - cd ..
