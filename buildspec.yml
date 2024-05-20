@@ -15,6 +15,9 @@ phases:
       - echo "Zipping deployment package..."
       - zip -r9 ../deployment_package.zip . -i .
       - cd ..
+      - mkdir ProduceAirbnbBookingData
+      - cp lambda_function_1.py ProduceAirbnbBookingData
+      - mkdir 
       - zip -g deployment_package.zip lambda_function_1.py
       - zip -g deployment_package.zip lambda_function_2.py
 
